@@ -1,13 +1,16 @@
-spring:                      //upload file to backend
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
   datasource:
-    url: jdbc.postgres://localhost:5432/springbackend
+    url: jdbc:postgresql://localhost:5432/springjava
     username: postgres
-    password: aom_31433310
+    password: syspass
   servlet:
     multipart:
       enabled: true
       max-file-size: 2MB
       max-request-size: 5MB
 
-//config connecting to database
+
 
