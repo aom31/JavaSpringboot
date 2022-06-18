@@ -1,6 +1,7 @@
 package com.example.demo.api;
 
-import com.example.demo.business.Businessapi;
+import com.example.demo.business.UserBusiness;
+import com.example.demo.entity.User;
 import com.example.demo.exception.Baseexception;
 import com.example.demo.exception.FileUploadException;
 import com.example.demo.model.Mregister;
@@ -11,11 +12,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@RequestMapping("/test")
-public class TestApi {
+@RequestMapping("/user")
+public class UserAPI {
 
     @Autowired
-    private Businessapi businessapi;
+    private UserBusiness businessapi;
     @GetMapping("/getread")
     public Mresponse test() {
         Mresponse respon = new Mresponse();
@@ -25,9 +26,9 @@ public class TestApi {
     }
 
     @PostMapping
-    @RequestMapping("/inputregister")
-    public ResponseEntity<String> register(@RequestBody Mregister register) throws Baseexception {   //use responseentity for http
-        String respo = businessapi.register(register);
+    @RequestMapping("/register")
+    public ResponseEntity<User> register(@RequestBody Mregister register) throws Baseexception {   //use responseentity for http
+        User respo = businessapi.register(register);
         return ResponseEntity.ok(respo);
     }
 
