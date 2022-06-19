@@ -10,7 +10,5 @@ public class MRegisterResponse {
     private String email;
 
 
-    public String getPassword() {
-        return "";
-    }
+   
 }
