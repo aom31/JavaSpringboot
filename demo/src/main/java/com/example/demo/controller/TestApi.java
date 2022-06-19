@@ -1,17 +1,30 @@
 package com.example.demo.controller;
 
+import com.example.demo.business.TestapiBusiness;
+import com.example.demo.exception.BaseException;
+import com.example.demo.exception.UserException;
 import com.example.demo.model.JsonResponse;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.demo.model.MRegister;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/testapi")
 public class TestApi {
 
+    //1field injection
+//    @Autowired
+//    public TestapiBusiness business;
+    //2 Constructor injection
+    private final TestapiBusiness business;
+
+    public TestApi(TestapiBusiness business) {
+        this.business = business;
+    }
+
+
     @GetMapping("/view")
-    public JsonResponse viewData(){
+    public JsonResponse viewData() {
         JsonResponse response = new JsonResponse();
         //set data init
         response.setName("aom");
@@ -20,9 +33,12 @@ public class TestApi {
     }
 
     @PostMapping("/register")
-    public String register(){
+    public ResponseEntity<String> register(@RequestBody MRegister mRegisterRequest)  throws BaseException {
 
-        return "";
+            String response = business.register(mRegisterRequest);
+            return ResponseEntity.ok(response);
+
+
     }
 
 
