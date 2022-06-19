@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.business.ProductBusiness;
+import com.example.demo.exception.BaseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,7 @@ public class ProductApi {
 
 
     @GetMapping("/detail/{id}")
-    public ResponseEntity<String> getProductById(@PathVariable("id") String id){
+    public ResponseEntity<String> getProductById(@PathVariable("id") String id) throws BaseException {
         String response = productBusiness.getProductById(id);
         return  ResponseEntity.ok(response);
 
