@@ -3,9 +3,8 @@ package com.example.demo.controller;
 import com.example.demo.business.TestapiBusiness;
 import com.example.demo.exception.BaseException;
 import com.example.demo.exception.FileException;
-import com.example.demo.exception.UserException;
 import com.example.demo.model.JsonResponse;
-import com.example.demo.model.MRegister;
+import com.example.demo.model.MRegisterResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -35,9 +34,9 @@ public class TestApi {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody MRegister mRegisterRequest)  throws BaseException {
+    public ResponseEntity<String> register(@RequestBody MRegisterResponse mRegisterResponseRequest)  throws BaseException {
 
-            String response = business.register(mRegisterRequest);
+            String response = business.register(mRegisterResponseRequest);
             return ResponseEntity.ok(response);
 
 

@@ -2,9 +2,8 @@ package com.example.demo.business;
 
 import com.example.demo.exception.FileException;
 import com.example.demo.exception.UserException;
-import com.example.demo.model.MRegister;
+import com.example.demo.model.MRegisterResponse;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -15,14 +14,14 @@ import java.util.Objects;
 @Service
 public class TestapiBusiness {
 
-    public String register(MRegister mRegisterRequest) throws UserException {
+    public String register(MRegisterResponse mRegisterResponseRequest) throws UserException {
         //request null validate
-        if( mRegisterRequest == null){
+        if( mRegisterResponseRequest == null){
             throw UserException.requestNull();
         }
 
         //validate email
-        if (Objects.isNull(mRegisterRequest.getEmail())){
+        if (Objects.isNull(mRegisterResponseRequest.getEmail())){
             throw UserException.emailNull();
         }
         return "";

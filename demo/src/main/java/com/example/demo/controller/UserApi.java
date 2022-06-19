@@ -3,7 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.business.UserBusiness;
 import com.example.demo.entity.User;
 import com.example.demo.exception.BaseException;
-import com.example.demo.model.MRegister;
+import com.example.demo.model.MRegisterResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,9 +21,9 @@ public class UserApi {
 
 
     @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody MRegister mRegisterRequest)  throws BaseException {
+    public ResponseEntity<MRegisterResponse> register(@RequestBody MRegisterResponse mRegisterResponseRequest)  throws BaseException {
 
-        User response = userBusiness.userRegister(mRegisterRequest);
+        MRegisterResponse response = userBusiness.userRegister(mRegisterResponseRequest);
         return ResponseEntity.ok(response);
 
 

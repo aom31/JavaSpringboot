@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Cleanup;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -17,11 +18,15 @@ public class User  extends  BaseEntity{
     @Column(nullable = false, unique = true, length = 40)
     private String email;
 
+    //not send password
+
     @Column(nullable = false, length = 20)
     private String password;
 
     @Column(nullable = false, length = 60)
     private String name;
+
+    private String civilId;
 
 
 }

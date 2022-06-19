@@ -3,9 +3,14 @@ package com.example.demo.model;
 import lombok.Data;
 
 @Data
-public class MRegister {
+public class MRegisterResponse {
 
     private String name;
-    private String password;
+
     private String email;
+
+
+    public String getPassword() {
+        return "";
+    }
 }
