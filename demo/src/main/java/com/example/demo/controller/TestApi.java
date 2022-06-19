@@ -1,0 +1,18 @@
+package com.example.demo.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/testapi")
+public class TestApi {
+
+    @GetMapping("/view")
+    public String viewData(){
+        return "test getmap";
+
+    }
+
+
+}
