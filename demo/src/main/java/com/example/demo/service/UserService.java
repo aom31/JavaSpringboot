@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.entity.User;
 import com.example.demo.exception.UserException;
 import com.example.demo.repository.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -12,8 +13,11 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
+    private final PasswordEncoder passwordEncoder;
+
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     //creaete method function
@@ -43,7 +47,7 @@ public class UserService {
         //save
         User entity = new User();
         entity.setEmail(email);
-        entity.setPassword(password);
+        entity.setPassword(passwordEncoder.encode(password));
         entity.setName(name);
 
         return userRepository.save(entity);
